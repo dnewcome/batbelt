@@ -1,0 +1,19 @@
+instructions to deploy a new tool:
+
+Download the plain zip installation of a utility, or extract the files from 
+the installer and place in a folder under batbelt. Preferably the folder will have
+an 'unfriendly' name, that is, should include version number and platform 
+as indicated eg,
+
+Filezilla-3.4.0_win32
+
+note that the executable will be relative to this folder.
+
+deploying to the remote server-
+edit the config.bat file to point to the remote server via ssh first.
+
+run:
+deploy-tool.bat path\Folder-2.3_win32 Folder-2.3_win32
+
+for example. .Yes the second arg is pretty much redundant, but string ops are 
+a pain in batch files.
