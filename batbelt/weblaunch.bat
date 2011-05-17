@@ -8,6 +8,14 @@
 :: Notes: 
 ::	archive name (zip file) must match the application name. Appname and 
 ::	executable must not contain spaces.
+::
+:: TODO: enable flag for whether to 'call' or 'start' (spawn new window or not)
+::		commandline tools currently will start in their own shell windows, which
+::		probably will get annoying.
+::
+:: TODO: enable force re-get from server. If package is updated. This may be
+:: 	lower priority though.
+
 @echo off
 setlocal
 
