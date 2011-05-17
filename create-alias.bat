@@ -3,7 +3,7 @@
 ::	2010 Dan Newcome
 
 :: usage:
-:: create-script <shortcut-name> <package-path> <executable-name>
+:: create-alias <shortcut-name> <package-path> <executable-name>
 
 :: <package-path> is relative to the location of the batbelt root
 
