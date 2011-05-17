@@ -1,0 +1,24 @@
+Create a tool for getting aliases from the server and populating alias\
+Currently there is a script in the client for this, but not in the admin
+tools.
+
+Reorganize the scripts to make it more obvious which is the admin section
+and which is the client section.
+
+Do something with pscp. We need this for the admin tools, but I don't want
+it hanging out in the root folder on its own.
+
+Organization - currently it is hard to tell what is part of the BatBelt
+distro and what are tools that have been added. This goes for the client
+folder too where the client maintenance scripts share the same folder as
+all of the program aliases.
+
+Currently the deploy script for batbelt itself copies all aliases to 
+the repo to the alias\ folder. This is redundant since we have a 
+separate mechanism to archive all aliases. Figure out which way we 
+want to handle this. Also thought about putting the alias along with 
+the archive, but perhaps we'd want different aliases sometimes for individual
+tastes?
+
+Do we really need to make batbelt a self extracting executable? Most
+Windows systems have a (slow) file extraction capability built in.
