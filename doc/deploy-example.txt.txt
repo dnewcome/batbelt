@@ -1,19 +1,86 @@
-instructions to deploy a new tool:
+Example usage scenario: 
+=======================
 
-Download the plain zip installation of a utility, or extract the files from 
-the installer and place in a folder under batbelt. Preferably the folder will have
-an 'unfriendly' name, that is, should include version number and platform 
-as indicated eg,
+Configuring and deploying FileZilla to a BatBelt repository
 
-Filezilla-3.4.0_win32
 
-note that the executable will be relative to this folder.
+Requirements:
+-------------
+target sftp site set up and accessible
 
-deploying to the remote server-
-edit the config.bat file to point to the remote server via ssh first.
 
-run:
-deploy-tool.bat path\Folder-2.3_win32 Folder-2.3_win32
+Configure BatBelt admin tools:
+------------------------------
 
-for example. .Yes the second arg is pretty much redundant, but string ops are 
-a pain in batch files.
+Edit the config.bat file to point to the remote server via ssh.
+
+
+Prep application files:
+-----------------------
+
+Download the plain zip installation of a utility or extract the files from 
+the installer.
+
+
+Run deployment tool:
+--------------------
+
+Assuming the FileZilla application files are contained in the folder Filezilla,
+call deploy-tool.bat as follows:
+
+    deploy-tool.bat Filezilla FileZilla-3.4.0
+
+The second argument is the canonical name desired for the package. This name is used
+to identify the package when creating aliases and when BatBelt attempts to determine
+if the application is already installed. It is recommended to leave version and
+platform information intact, as multiple versions may be installed side-by-side
+as long as different aliases are created for each version.
+
+
+Create alias:
+-------------
+
+In order for the new package to be available to users of the BatBelt repository
+the an alias (shortcut) must be created for the new tool. Run:
+
+    create-alias.bat fz FileZilla-3.4.0 filezilla.exe
+
+In the example above, "fz" is the short name that we'd like to launch the application.
+The second argument is the path of the application. Most of the time this will simply 
+be the canonical name of the package, as packages are downloaded from the repo and 
+extracted into a folder with the same name as the package archive. Occasionally some
+application will have the main executable file under a bin\ directory, so the path 
+to the executable will be something like:
+
+    FileZilla-3.4.0\bin
+
+The executable name in the third argument is simply the main application binary that
+is to be launched by the alias.
+
+Aliases are created and installed into the alias\ directory, ready for deployment to
+the repository. For convenience all aliases are archived and sent in a single archive
+file. Note that this makes it difficult to avoid conflicts between different repo
+administrators. For this reason, it is recommended that a repo be maintained by 
+a single administrator or a coordinated group of administrators. Merging aliases
+increases the complexity of the system and is not in alignment of the author's 
+goal of extreme simplicity.
+
+
+Deploy aliases to repository:
+-----------------------------
+
+In order for other users to pick up the new tool, the aliases must be pushed out 
+to the repository. Pushing a new aliases.zip archive is accomplished using:
+
+    deploy-alias.bat
+
+with no additional arguments. The repository location is picked up from the
+tool configuration settings, and all aliases installed under alias\ are 
+automatically picked up and included.
+
+Other users may update their aliases using:
+
+    get-aliases.bat
+
+again, requiring no additional arguments.
+
