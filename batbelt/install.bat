@@ -1,9 +1,9 @@
 @echo off
 :: install batbelt to another location and add to path
-
-if not "%1x"=="x" (
-	echo installing in %1
-	xcopy . "%1\batbelt\" /S
+echo %~1
+if not "%~1x"=="x" (
+	echo installing in %~1
+	xcopy . "%~1\batbelt\" /S
 	goto :setpath
 ) else (
 	rem TODO Install in programfiles?
@@ -13,5 +13,5 @@ if not "%1x"=="x" (
 )
 
 :setpath
-setx path "%path%;%1\batbelt"
+setx path "%path%;%~1\batbelt"
 :end
