@@ -22,3 +22,5 @@ tastes?
 
 Do we really need to make batbelt a self extracting executable? Most
 Windows systems have a (slow) file extraction capability built in.
+
+Uninstall script that removes batbelt from the path.
