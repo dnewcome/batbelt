@@ -23,4 +23,14 @@ tastes?
 Do we really need to make batbelt a self extracting executable? Most
 Windows systems have a (slow) file extraction capability built in.
 
+
 Uninstall script that removes batbelt from the path.
+
+In the future we might want to enable some configuration scripts to run.
+However, I don't think this is a high priority, since the idea is to
+preconfigure as much as possible in the app before packaging. We want
+to accomplish zero footprint. However there are several utils that use
+the registry and have complicated configurations that I'd like to 
+set up during installation. Support for adding registry keys might
+be nice.
+
