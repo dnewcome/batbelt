@@ -38,10 +38,9 @@ if exist "%apppath%" (
 	start %executable% %1 %2 %3 %4 %5 %6 %7 %8 %9
 ) else (
 	echo %appname% not installed - fetching
-::mkdir "%apppath%"
-	%scriptdir%curl\curl.exe %url%/%appname%.zip --O %appname%.zip
-	%scriptdir%7-zip\7za.exe x -o"%appname%" %appname%.zip
-	del %appname%.zip
+	"%scriptdir%"curl\curl.exe %url%/%appname%.zip --O "%scriptdir%%appname%.zip"
+	"%scriptdir%"7-zip\7za.exe x -o"%scriptdir%%appname%" "%scriptdir%%appname%.zip"
+	del "%scriptdir%%appname%.zip"
 	start %executable% %1 %2 %3 %4 %5 %6 %7 %8 %9
 )
 endlocal
