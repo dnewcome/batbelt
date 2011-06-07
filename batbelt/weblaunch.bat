@@ -3,7 +3,7 @@
 ::	2010 Dan Newcome
 
 :: Usage:
-::	weblaunch <appname> <executable>
+::	weblaunch <appname> <executable> <call>
 
 :: Notes: 
 ::	archive name (zip file) must match the application name. Appname and 
@@ -35,12 +35,21 @@ set path=%path%;%apppath%
 :: TODO: shift doesn't affect %*, so we resort to naming each param 
 :: there must be some better way to do this
 if exist "%apppath%" (
-	start %executable% %1 %2 %3 %4 %5 %6 %7 %8 %9
+	if "%1"=="call" (
+		call %executable% %2 %3 %4 %5 %6 %7 %8 %9
+	) else (
+		start %executable% %1 %2 %3 %4 %5 %6 %7 %8 %9
+	)
 ) else (
 	echo %appname% not installed - fetching
 	"%scriptdir%"curl\curl.exe %url%/%appname%.zip --O "%scriptdir%%appname%.zip"
 	"%scriptdir%"7-zip\7za.exe x -o"%scriptdir%%appname%" "%scriptdir%%appname%.zip"
 	del "%scriptdir%%appname%.zip"
-	start %executable% %1 %2 %3 %4 %5 %6 %7 %8 %9
+	
+	if "%1"=="call" (
+		call %executable% %2 %3 %4 %5 %6 %7 %8 %9
+	) else (
+		start %executable% %1 %2 %3 %4 %5 %6 %7 %8 %9
+	)
 )
 endlocal
