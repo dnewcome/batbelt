@@ -1,8 +1,8 @@
-:: create batbelt distribution and deploy to web server
-:: this is just the basic tool distribution, no optional
-:: tools are included.
+:: deploy a single alias to the server
 call config.bat
+if "%1x"=="x" goto :end
 
-batbelt\7-zip\7za.exe a aliases.zip alias\*
-pscp aliases.zip %toolpath%
-del aliases.zip
+pscp %1.bat %toolpath%/alias
+
+:end
+echo usage: deploy-alias ^<name^>
