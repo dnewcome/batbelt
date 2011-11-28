@@ -42,7 +42,7 @@ if exist "%apppath%" (
 	)
 ) else (
 	echo %appname% not installed - fetching
-	"%scriptdir%"curl\curl.exe %url%/%appname%.zip --O "%scriptdir%%appname%.zip"
+	"%scriptdir%"curl\curl.exe %url%/packages/%appname%.zip --O "%scriptdir%%appname%.zip"
 	"%scriptdir%"7-zip\7za.exe x -o"%scriptdir%%appname%" "%scriptdir%%appname%.zip"
 	del "%scriptdir%%appname%.zip"
 	
