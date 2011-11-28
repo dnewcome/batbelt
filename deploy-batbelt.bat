@@ -1,7 +1,7 @@
 :: create batbelt distribution and deploy to web server
 :: this is just the basic tool distribution, no optional
 :: tools are included.
-call config.bat
+call batbelt\config.bat
 
 :: use -sfx to make self-extracting. Some firewalls block
 :: exe files so this is not as useful as I thought.
