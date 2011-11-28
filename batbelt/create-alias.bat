@@ -9,8 +9,8 @@
 @echo off
 if "%1x"=="x" goto :end
 
-echo @echo off > alias\%1.bat
-echo call weblaunch.bat %2 %3 %%* >> alias\%1.bat
+echo @echo off > %1.bat
+echo call weblaunch.bat %2 %3 %%* >> %1.bat
 
 goto :eof
 :end
