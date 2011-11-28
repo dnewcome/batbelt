@@ -5,11 +5,7 @@ call config.bat
 
 set scriptdir=%~dp0
 
-"%scriptdir%curl\curl.exe" %url%/aliases.zip --O "%scriptdir%aliases.zip"
+"%scriptdir%wget\wget.exe" %url%/alias/ --recursive --level=1 --accept .bat
 
-"%scriptdir%7-zip\7za.exe" e -o"%scriptdir%" "%scriptdir%aliases.zip"
-
-
-del "%scriptdir%aliases.zip"
 
 endlocal
