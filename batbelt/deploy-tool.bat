@@ -4,7 +4,7 @@
 if "%1x"=="x" goto end
 
 call config.bat
-batbelt\7-zip\7za.exe a -r "%2".zip ".\%1\*"
+7-zip\7za.exe a -r "%2".zip ".\%1\*"
 pscp "%2".zip %toolpath%
 goto :eof
 :end
