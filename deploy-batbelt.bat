@@ -10,3 +10,5 @@ batbelt\7-zip\7za.exe a -r batbelt.zip batbelt
 
 :: pscp batbelt.exe %toolpath%
 batbelt\pscp\pscp batbelt.zip %toolpath%
+
+del batbelt.zip
